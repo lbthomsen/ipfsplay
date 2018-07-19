@@ -3,11 +3,11 @@
 var fs = require("fs");
 var ipfsAPI = require("ipfs-api");
 
+var ipfs = ipfsAPI('/ip4/127.0.0.1/tcp/5001');
+
 var argv = process.argv.slice(2);
 
 if (argv[0] === "id") {
-
-    var ipfs = ipfsAPI('/ip4/127.0.0.1/tcp/5001');
 
     ipfs.id(function(err, result) {
 
@@ -22,8 +22,6 @@ if (argv[0] === "id") {
     });
 
 } else if (argv[0] === "version") {
-
-    var ipfs = ipfsAPI('/ip4/127.0.0.1/tcp/5001');
 
     ipfs.version(function(err, result) {
         if (err) {
@@ -47,8 +45,6 @@ if (argv[0] === "id") {
                 console.error("FS Error: %j", err);
             } else {
 
-                var ipfs = ipfsAPI('/ip4/127.0.0.1/tcp/5001');
-
                 ipfs.add(data, function(err, result) {
                     if (err) {
                         console.error("IPFS error: %j", err);
@@ -59,7 +55,7 @@ if (argv[0] === "id") {
                     }
                 });
             }
-            
+
         });
     }
 
